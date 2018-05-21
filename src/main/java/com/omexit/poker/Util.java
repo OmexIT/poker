@@ -8,7 +8,10 @@ public class Util {
         for (String strCard : strCards) {
             Card card = null;
             strCard = strCard.trim();
-            if(strCard.length() < 2 || strCard.length() > 3){
+            if (strCard.length() == 1 && strCard.equalsIgnoreCase("j")) {
+                strCard = " " + strCard;
+            }
+            if (strCard.length() < 2 || strCard.length() > 3) {
                 throw new IllegalArgumentException("Invalid input: " + strCard);
             } else {
                 // Suit is always the last one character
