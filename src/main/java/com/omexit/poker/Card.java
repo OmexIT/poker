@@ -60,9 +60,9 @@ public class Card implements Comparable<Card>{
 
     Card(String rank, String suit) {
         this.rankName = rankNames.get(rank);
-        if(rank.equals("") && suit.equals("j")){
+        if(rank.equals(" ") && suit.equals("j")){
             this.rankName = "joker";
-            this.rank = "joker";
+            rank = "joker";
         }
         if (this.rankName == null){
             throw new IllegalArgumentException("Invalid rank: " + rank);
