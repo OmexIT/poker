@@ -38,7 +38,7 @@ public class Main {
                     }
                 }
 
-                System.out.println(hand);
+                hand.displayPokerHand();
             }
 
             System.out.println();
