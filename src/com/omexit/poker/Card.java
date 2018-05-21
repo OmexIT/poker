@@ -3,7 +3,7 @@ package com.omexit.poker;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Card {
+public class Card implements Comparable<Card>{
 
     private String rank;
     private String suit;
@@ -22,6 +22,7 @@ public class Card {
         suitNames.put("s", "spades");
         suitNames.put("d", "diamonds");
         suitNames.put("c", "clubs");
+        suitNames.put("j", "joker");
 
         //Initialize 13 ranks name hash map
         rankNames = new HashMap<>();
@@ -41,6 +42,7 @@ public class Card {
 
         //Initialize 13 ranks name hash map
         rankValues = new HashMap<>();
+        rankValues.put("joker", 0);
         rankValues.put("a", 1);
         rankValues.put("2", 2);
         rankValues.put("3", 3);
@@ -58,6 +60,10 @@ public class Card {
 
     Card(String rank, String suit) {
         this.rankName = rankNames.get(rank);
+        if(rank.equals("") && suit.equals("j")){
+            this.rankName = "joker";
+            this.rank = "joker";
+        }
         if (this.rankName == null){
             throw new IllegalArgumentException("Invalid rank: " + rank);
         }
@@ -96,5 +102,11 @@ public class Card {
     @Override
     public String toString() {
         return rankName + " of " + suitName;
+    }
+
+    @Override
+    public int compareTo(Card o) {
+        //descending order
+        return o.getValue() - value;
     }
 }
