@@ -1,9 +1,6 @@
 package com.omexit.poker;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.*;
 
 public class Hand {
 
@@ -100,11 +97,13 @@ public class Hand {
                 pokerHand = "One pair";
             }
         } else {
-            if (flushPoint) {
+            if (flushPoint && straightPoint) {
+                pokerHand = "Straight flush";
+            } else if (flushPoint) {
                 pokerHand = "Flush";
             } else if (straightPoint) {
                 pokerHand = "Straight";
-            }else {
+            } else {
                 pokerHand = "High card";
             }
         }
@@ -113,7 +112,7 @@ public class Hand {
     }
 
     public void displayPokerHand() {
-        String pokerHand =getBestPokerHand();
+        String pokerHand = getBestPokerHand();
 
         System.out.println(this);
         System.out.println(pokerHand);
